@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="WpfComboBoxWithImage.Controls.ComboBoxWithImage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfComboBoxWithImage.Controls"
+             xmlns:converters="clr-namespace:WpfComboBoxWithImage.Converters"
+             mc:Ignorable="d"
+             x:Name="comboBoxWithImage">
+    <UserControl.Resources>
+        <converters:LanguageKeyToUriConverter x:Key="LanguageKeyToUriConverter"/>
+        <converters:NullVisibilityConverter x:Key="NullVisibilityConverter"/>
+
+    </UserControl.Resources>
+    <Grid >
+        <ComboBox x:Name="ComboBox"
+            ItemsSource="{Binding ElementName=comboBoxWithImage, Path=ItemsSource, Mode=OneWay}"
+            SelectedValuePath="Key" 
+            SelectedValue="{Binding ElementName=comboBoxWithImage, Path=SelectedItem}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Margin="0,0,5,0" Width="16" Height="11" Source="{Binding Key, Converter={StaticResource LanguageKeyToUriConverter}}"/>
+                        <TextBlock Text="{Binding Value}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Visibility="{Binding SelectedItem, ElementName=ComboBox, Converter={StaticResource NullVisibilityConverter}}"
+            IsHitTestVisible="False"
+            Content="{Binding  Path=DefaultText, ElementName=comboBoxWithImage}" />
+    </Grid>
+</UserControl>

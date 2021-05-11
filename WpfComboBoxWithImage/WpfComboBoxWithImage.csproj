@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Flags\en-US.png" />
+    <None Remove="Assets\Flags\fr-FR.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Flags\en-US.png" />
+    <Resource Include="Assets\Flags\fr-FR.png" />
+  </ItemGroup>
+
+</Project>

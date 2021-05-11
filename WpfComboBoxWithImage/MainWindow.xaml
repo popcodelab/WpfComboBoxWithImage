@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfComboBoxWithImage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfComboBoxWithImage" xmlns:controls="clr-namespace:WpfComboBoxWithImage.Controls"
+        xmlns:converters="clr-namespace:WpfComboBoxWithImage.Converters"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid >
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0">Language : </Label>
+        <controls:ComboBoxWithImage x:Name="ComboBoxWithImage"
+                                    Grid.Column="1"
+                                    ItemsSource="{Binding Path=Languages, Mode=OneWay}"
+                                    SelectedItem="{Binding Path=SelectedLanguage, Mode=TwoWay}"
+                                    DefaultText="Select a language..."/>
+    </Grid>
+</Window>
